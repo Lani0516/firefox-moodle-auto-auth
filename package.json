@@ -1,0 +1,16 @@
+{
+  "name": "firefox-moodle-auto-auth",
+  "version": "1.0.0",
+  "description": "Firefox WebExtension to auto-solve NCKU Moodle CAPTCHA",
+  "private": true,
+  "scripts": {
+    "build": "bash build/build.sh",
+    "dev": "npx web-ext run --source-dir . --firefox-profile moodle-dev --keep-profile-changes",
+    "package": "npx web-ext build -a dist/ --overwrite-dest"
+  },
+  "devDependencies": {
+    "tesseract.js": "^5.1.1",
+    "tesseract.js-core": "^5.1.0",
+    "web-ext": "^8.4.0"
+  }
+}

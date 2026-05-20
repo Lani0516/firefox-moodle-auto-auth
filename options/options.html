@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moodle 驗證碼自動填入 — 設定</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Moodle 驗證碼自動填入</h1>
+      <p class="subtitle">擴充功能設定</p>
+    </header>
+
+    <form id="settings-form" autocomplete="off">
+      <!-- Site URL -->
+      <div class="form-group">
+        <label for="siteUrl">網站 URL 匹配模式</label>
+        <input type="text" id="siteUrl" name="siteUrl" spellcheck="false">
+        <p class="help-text">設定要自動填入驗證碼的網站 URL 匹配模式</p>
+      </div>
+
+      <!-- Auto Submit -->
+      <div class="form-group form-group-inline">
+        <label for="autoSubmit">
+          <input type="checkbox" id="autoSubmit" name="autoSubmit">
+          <span>自動提交表單</span>
+        </label>
+        <p class="help-text">辨識完成且帳號密碼已填入後自動提交登入表單</p>
+      </div>
+
+      <!-- Submit Delay -->
+      <div class="form-group">
+        <label for="submitDelay">提交延遲時間 (毫秒)</label>
+        <input type="number" id="submitDelay" name="submitDelay" min="0" max="10000" step="100">
+        <p class="help-text">自動提交前的等待時間，建議 200 ~ 500 毫秒</p>
+      </div>
+
+      <!-- Char Whitelist -->
+      <div class="form-group">
+        <label for="charWhitelist">OCR 字元白名單</label>
+        <input type="text" id="charWhitelist" name="charWhitelist" spellcheck="false">
+        <p class="help-text">Moodle 驗證碼固定為 4 碼數字，預設只辨識 0-9</p>
+      </div>
+
+      <!-- Numeric Only -->
+      <div class="form-group form-group-inline">
+        <label for="numericOnly">
+          <input type="checkbox" id="numericOnly" name="numericOnly">
+          <span>僅辨識數字</span>
+        </label>
+        <p class="help-text">啟用後將忽略字元白名單，只接受 4 位 0-9 數字</p>
+      </div>
+
+      <!-- Retry On Fail -->
+      <div class="form-group form-group-inline">
+        <label for="retryOnFail">
+          <input type="checkbox" id="retryOnFail" name="retryOnFail">
+          <span>辨識失敗時自動重試</span>
+        </label>
+        <p class="help-text">登入失敗且重新載入頁面時自動再次嘗試辨識</p>
+      </div>
+
+      <!-- Max Retries -->
+      <div class="form-group">
+        <label for="maxRetries">最大重試次數</label>
+        <input type="number" id="maxRetries" name="maxRetries" min="1" max="20" step="1">
+        <p class="help-text">避免無限重試造成帳號鎖定</p>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="save-btn">儲存設定</button>
+        <button type="button" class="btn btn-secondary" id="reset-btn">恢復預設值</button>
+      </div>
+
+      <!-- Feedback -->
+      <div id="feedback" class="feedback" hidden></div>
+    </form>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

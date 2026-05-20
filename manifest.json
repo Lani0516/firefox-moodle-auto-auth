@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "Moodle CAPTCHA Auto-Solver",
+  "version": "1.0.0",
+  "description": "Auto-solve text image CAPTCHAs on NCKU Moodle login page using local OCR",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": [
+      "lib/tesseract/tesseract.min.js",
+      "background/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://moodle.ncku.edu.tw/login/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png"
+    },
+    "default_popup": "popup/popup.html",
+    "default_title": "Moodle CAPTCHA Solver"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'",
+  "web_accessible_resources": [
+    "lib/tesseract/*",
+    "lib/tesseract-core/*",
+    "lib/traineddata/*"
+  ]
+}

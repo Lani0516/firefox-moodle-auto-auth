@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <title>Moodle 驗證碼自動填入</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">Moodle 驗證碼填入</h1>
+    </header>
+
+    <!-- Page match status -->
+    <div class="section">
+      <div class="status-row" id="page-status">
+        <span class="status-dot" id="status-dot"></span>
+        <span class="status-text" id="status-text">偵測中...</span>
+      </div>
+    </div>
+
+    <!-- Last OCR result -->
+    <div class="section" id="ocr-section" hidden>
+      <div class="section-label">辨識結果</div>
+      <div class="ocr-result">
+        <span class="ocr-text" id="ocr-text">—</span>
+        <span class="ocr-confidence" id="ocr-confidence"></span>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="section controls">
+      <button class="btn btn-primary" id="solve-btn" disabled>手動辨識</button>
+
+      <label class="toggle-label" for="enabled-toggle">
+        <span>啟用擴充功能</span>
+        <div class="toggle-switch">
+          <input type="checkbox" id="enabled-toggle" checked>
+          <span class="toggle-track"></span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a href="#" id="options-link" class="options-link">進階設定</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
